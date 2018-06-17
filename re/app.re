@@ -9,21 +9,22 @@ let myBeers: array(beer) = [|
 |];
 
 let app = () =>
-  <View
-    style=Style.(
-            style([
-              marginTop(Pct(30.)),
-              flex(1.),
-              justifyContent(Center),
-              alignItems(Center),
-            ])
-          )>
+  <View style=Style.(style([marginTop(Pt(30.)), flex(1.)]))>
     <FlatList
       data=myBeers
       keyExtractor=((item, _inx) => item.name)
       renderItem=(
         FlatList.renderItem(bag =>
-          <Text> (ReasonReact.string(bag.item.name)) </Text>
+          <Text
+            style=Style.(
+                    style([
+                      padding(Pt(10.)),
+                      fontSize(Float(18.0)),
+                      height(Pt(44.)),
+                    ])
+                  )>
+            (ReasonReact.string(bag.item.name))
+          </Text>
         )
       )
     />
