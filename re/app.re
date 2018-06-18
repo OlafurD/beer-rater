@@ -1,6 +1,15 @@
 open BsReactNative;
 
 type beer = {name: string};
+type section = {
+  title: string,
+  content: string,
+};
+
+let sections: array(section) = [|
+  {title: "Borg", content: "Ulfur"},
+  {title: "Olvisholt", content: "Lemon IPA"},
+|];
 
 let myBeers: array(beer) = [|
   {name: "Brio"},
@@ -10,22 +19,16 @@ let myBeers: array(beer) = [|
 
 let app = () =>
   <View style=Style.(style([marginTop(Pt(30.)), flex(1.)]))>
-    <FlatList
-      data=myBeers
-      keyExtractor=((item, _inx) => item.name)
-      renderItem=(
-        FlatList.renderItem(bag =>
-          <Text
-            style=Style.(
-                    style([
-                      padding(Pt(10.)),
-                      fontSize(Float(18.0)),
-                      height(Pt(44.)),
-                    ])
-                  )>
-            (ReasonReact.string(bag.item.name))
-          </Text>
-        )
+    <Accordion
+      sections
+      renderSectionTitle=(
+        (sec: section, _b, _c) =>
+          <Text> (ReasonReact.string(sec.title)) </Text>
+      )
+      renderHeader=((_section, _b, _c, _d) => <Text value="header" />)
+      renderContent=(
+        (section, _b, _c, _d) =>
+          <Text> (ReasonReact.string(section.content)) </Text>
       )
     />
   </View>;

@@ -3,10 +3,18 @@
     "reason": {
         "react-jsx": 2
     },
-    "bsc-flags": ["-bs-super-errors"],
-    "bs-dependencies": ["bs-react-native", "reason-react"],
-    "sources": [{
-        "dir": "re"
-    }],
+    "bsc-flags": [
+        "-bs-super-errors",
+        "-w @a-40-42-45-4-9"
+    ],
+    "bs-dependencies": [
+        "bs-react-native",
+        "reason-react"
+    ],
+    "sources": [
+        {
+            "dir": "re"
+        }
+    ],
     "refmt": 3
 }
