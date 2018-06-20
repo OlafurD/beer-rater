@@ -9,12 +9,7 @@ type section = {
 let sections: array(section) = [|
   {title: "Borg", content: "Ulfur"},
   {title: "Olvisholt", content: "Lemon IPA"},
-|];
-
-let myBeers: array(beer) = [|
-  {name: "Brio"},
-  {name: "Ulfur"},
-  {name: "Blagosi"},
+  {title: "Brooklyn", content: "Sirachi"},
 |];
 
 let app = () =>
@@ -22,19 +17,12 @@ let app = () =>
     <Accordion
       sections
       renderSectionTitle=(
-        (sec: section, _b, _c) =>
-          <Text> (ReasonReact.string(sec.title)) </Text>
+        (section, _b, _c) =>
+        Table.beerDisplayRow(section.title)
       )
-      renderHeader=((_section, _b, _c, _d) => <Text value="header" />)
+      renderHeader=((_section, _b, _c, _d) => Table.beerDisplayRow("Beers"))
       renderContent=(
-        (section, _b, _c, _d) =>
-          <Text> (ReasonReact.string(section.content)) </Text>
+        (section, _b, _c, _d) => Table.beerDisplayRow(section.content)
       )
     />
   </View>;
-/* <View
-     style=Style.(
-             style([flex(1.), justifyContent(Center), alignItems(Center)])
-           )>
-     <Text> (ReasonReact.string("foobar")) </Text>
-   </View>; */
